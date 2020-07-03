@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.contrib.auth.models import User
 from django.views.generic import (
+    FormView,
     ListView,
     DetailView,
     CreateView,
@@ -9,7 +10,8 @@ from django.views.generic import (
     DeleteView
 )
 from .models import Post
-
+from .forms import SearchForm
+from django.db.models import Q
 
 def home(request):
     context = {
@@ -17,6 +19,14 @@ def home(request):
     }
     return render(request, 'blog/home.html', context)
 
+class SearchResultsView(ListView):
+    model = Post
+    template_name = 'blog/search_results.html'
+    form_class = SearchForm
+
+    def get_queryset(self):
+
+        return Post.objects.filter(Q(title__icontains='tinteo'))
 
 class PostListView(ListView):
     model = Post
@@ -77,4 +87,4 @@ class PostDeleteView(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
 
 
 def about(request):
-    return render(request, 'blog/about.html', {'title': 'About'})
+    return render(request, 'blog/about.html', {'title': 'about'})

@@ -1,11 +1,11 @@
 body {
-    background: #fafafa;
-    color: #333333;
+    background: #0F1939;
+    color: #ffffff;
     margin-top: 5rem;
   }
   
   h1, h2, h3, h4, h5, h6 {
-    color: #444444;
+    color: #fcfcfc;
   }
   
   ul {
@@ -29,7 +29,7 @@ body {
   }
   
   .content-section {
-    background: #ffffff;
+    background: rgb(14, 23, 51);
     padding: 10px 20px;
     border: 1px solid #dddddd;
     border-radius: 3px;
@@ -37,7 +37,7 @@ body {
   }
   
   .article-title {
-    color: #444444;
+    color: #ffffff;
   }
   
   a.article-title:hover {
@@ -62,7 +62,7 @@ body {
   }
   
   .article-metadata a:hover {
-    color: #333;
+    color: rgb(255, 255, 255);
     text-decoration: none;
   }
   
@@ -81,4 +81,16 @@ body {
   
   .account-heading {
     font-size: 2.5rem;
+  }
+
+  .search-bar{
+    max-width: 450px;
+    width: 100%;
+    color: #0F1939;
+    background: #0F1939;
+  }
+
+  form{
+    width: 100%;
+    color: rgb(9, 15, 37);
   }
