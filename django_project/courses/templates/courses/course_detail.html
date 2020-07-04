@@ -1,0 +1,7 @@
+{% extends "blog/base.html" %}
+{% block content %}
+  {{ object.title }}
+  {% for video in object.videos %}
+    <a href="{{ video.get_absolute_url }} "> {{video.title}}</a> 
+  {% endfor %}
+{% endblock content %}
