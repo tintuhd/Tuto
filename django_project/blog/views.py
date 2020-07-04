@@ -12,6 +12,7 @@ from django.views.generic import (
 from .models import Post
 from .forms import SearchForm
 from django.db.models import Q
+from django.http import Http404 
 
 def home(request):
     context = {
