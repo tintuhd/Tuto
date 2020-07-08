@@ -34,3 +34,5 @@ class Video(models.Model):
             'course_slug': self.course.slug,
             'video_slug': self.slug
         })
+    
+    

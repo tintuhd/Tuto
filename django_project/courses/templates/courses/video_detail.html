@@ -1,4 +1,9 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  {{ object }}
+  <h1> Video Detail View </h1>
+
+  {% if object is not None %}
+    {{ object.title }}
+    {{ object.description }}
+  {% endif %}
 {% endblock content %}

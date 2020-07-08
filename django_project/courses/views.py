@@ -23,4 +23,4 @@ class VideoDetailView(View):
         context = {
             'object': video
         }
-        return render(request, "video_detail.html", context)
+        return render(request, "courses/video_detail.html", context)

@@ -18,19 +18,21 @@
         <title>Django Blog</title>
     {% endif %}
 </head>
-<body>
-    <header class="site-header">
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top">
-        <div class="container">
-          <a class="navbar-brand mr-4" href="{% url 'blog-home' %}"><img src="{% static 'blog/img/learkn_logo.png' %}"/></a>
+<body class="container-fluid">
+
+    {% include 'courses/messages.html' %}
+    <header class="site-header"> <!-- Navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top pl-0">
+        <div class="container-fluid nav-container">
+          <a class="navbar-brand mr-2" href="{% url 'blog-home' %}"><img src="{% static 'blog/img/learkn_logo.png' %}"  height='32' width='134' /></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggle" aria-controls="navbarToggle" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarToggle">
             <div class="search-bar mt-sm-2 mr-2">
-              <form action href="{% url 'search_results' %}" method='GET'>
+              <form action href="{% url 'search_results' %}" method='GET'> 
                 {{ form }}
-                <input type="text" class="form-control" id="id_q" placeholder="What would you like to learn">
+                <input type="text" class="form-control" name="q" id="id_q" placeholder="What would you like to learn">
               </form>
             </div>
             <div class="navbar-nav mr-auto">
@@ -56,33 +58,65 @@
         </div>
       </nav>
     </header>
-    <main role="main" class="container">
-      <div class="row">
-        <div class="col-md-8">
-          {% if messages %}
-            {% for message in messages %}
-                <div class="alert alert-{{ message.tags }}">
-                    {{ message }}
+      <main role="main" class="profile-container row" > <!-- Profile Side Nav -->
+        <section class= "profile col-2 "> 
+            <div class="container user_profile">
+              <div class="row"> 
+                <div class="col-6 pt-4">
+                  <img class="rounded-circle article-img pt-10" src="{{ user.profile.image.url }}">
                 </div>
-            {% endfor %}
-          {% endif %}
-          {% block content %}{% endblock %}
-        </div>
-        <div class="col-md-4">
-          <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
-              <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
-              </ul>
-            </p>
+                <div class="col-6 pt-4">
+                  {{ user.username }}
+                </div>
+              </div>
+              <div class="row pt-4">
+                <div class="col-12 d-flex flex-row  pt-4">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> View Profile </div> 
+                </div> 
+                <div class="col-12 d-flex flex-row pt-4 ">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> Home </div> 
+                </div> 
+                <div class="col-12 d-flex flex-row pt-4">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> Favorites </div> 
+                </div> 
+                <div class="col-12 d-flex flex-row pt-4">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> Portfolio </div> 
+                </div> 
+                <div class="col-12 d-flex flex-row pt-4">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> Notifications </div> 
+                </div> 
+                <div class="col-12 d-flex flex-row pt-4 ">
+                  <div class=" ">  Icon </div> 
+                  <div class=" "> Educators </div> 
+                </div> 
+              </div>
+            </div>
+          </section>
+          <div class="container-fluid content col-10">
+            <div class="row ">
+                {% if messages %}
+                {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }}">
+                        {{ message }}
+                    </div>
+                {% endfor %}
+              {% endif %}
+    
+              {% block content %}
+              {% endblock %}
+              
+            </div>
           </div>
-        </div>
-      </div>
-    </main>
+      </main>
+      
+        
+        
+   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -92,6 +126,5 @@
     <script type="text/javascript">
       document.getElementById("id_q").value = "{{query}}"
     </script>
-
   </body>
 </html>
