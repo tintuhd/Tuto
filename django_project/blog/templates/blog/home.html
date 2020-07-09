@@ -3,38 +3,72 @@
 
 
   
-    <section class=" carasoule col-12 pb-5" >
-      <div class="container user_profile">
-        <div class="row"> 
-          <div class="col-12 pt-4">
-            <img src="static/blog/img/learkn_homepage_img.jpg" class="img-fluid" alt="Homepage Image">
+  <div class=" caroursel col-12 pb-5" >
+    <div class="container user_profile">
+      <div class="row"> 
+        <div class="col-12 pt-4 ">
+          <img src="static/blog/img/learkn_homepage_img.png" class="img-fluid bg-img" alt="Homepage Image">
+        </div>
+      </div>
+    </div>
+
+    <div class="courses container-fluid col-12 pt-2">
+      <p> Popular Courses </p>
+      <div class="courses">
+        <div class="row col-12">
+          <div class="card " style="width: 18rem; height: 12;">
+            <img src="static/blog/img/co.png " class="card-img pr-3" alt=" " >
+            <div class="card-body">
+              <h5 class="card-title">Suavoskies</h5>
+              <p class="card-text"> smooth .</p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+
+          <div class="card " style="width: 18rem; height: 12;">
+            <img src="static/blog/img/co.png " class="card-img pr-3 " alt=" " >
+            <div class="card-body">
+              <h5 class="card-title">Pythonskies</h5>
+              <p class="card-text"> Python </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
+          </div>
+        
+        
+          <div class="card " style="width: 18rem; height: 12;">
+            <img src="static/blog/img/co.png " class="card-img pr-3 " alt=" " >
+            <div class="card-body">
+              <h5 class="card-title"> Autodidactism </h5>
+              <p class="card-text"> self-education </p>
+              <a href="#" class="btn btn-primary">View more</a>
+            </div>
           </div>
         </div>
       </div>
-    </section>
- 
+    </div>
 
+  
+  <div class="pagination">
+    {% if is_paginated %}
 
-  {% if is_paginated %}
-
-    {% if page_obj.has_previous %}
-      <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
-    {% endif %}
-
-    {% for num in page_obj.paginator.page_range %}
-      {% if page_obj.number == num %}
-        <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
-      {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
-        <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+      {% if page_obj.has_previous %}
+        <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.previous_page_number }}">Previous</a>
       {% endif %}
-    {% endfor %}
 
-    {% if page_obj.has_next %}
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
-      <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="btn btn-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="btn btn-outline-info mb-4" href="?page={{ num }}">{{ num }}</a>
+        {% endif %}
+      {% endfor %}
+
+      {% if page_obj.has_next %}
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.next_page_number }}">Next</a>
+        <a class="btn btn-outline-info mb-4" href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+      {% endif %}
+
     {% endif %}
-
-  {% endif %}
- 
+  </div>
 {% endblock content %}

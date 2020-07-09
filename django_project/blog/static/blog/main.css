@@ -1,7 +1,8 @@
 body {
-    background: #0F1939;
+    background: #0A132E;
     color: #ffffff;
     margin-top: 0;
+    font-size: 16px;
   }
   
 h1, h2, h3, h4, h5, h6 {
@@ -14,6 +15,9 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 0;
 }
 
+.navbar-expand-md .navbar-toggler {
+  display: inline-block;
+}
 
 ul {
   margin: 0;
@@ -117,14 +121,14 @@ main.container-fluid{
 
 main{
   padding-top: 0px;
-
-
+  font-size: 16px;
 }
+
 
 .profile{
   width: 241 px;
   height: 827px;
-  background-color: rgb(10, 18, 43);
+  background-color: #0F1939;
   display: grid;
   grid-template-columns: 1fr;
   padding-left: 0;
@@ -132,4 +136,13 @@ main{
 
 .site-header{
   height: 75px;
+}
+
+.bg-img{
+  border-radius: 20px;
+}
+
+.card{
+  background-color: #0F1939;
+  
 }
