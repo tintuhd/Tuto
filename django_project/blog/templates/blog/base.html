@@ -21,13 +21,17 @@
 <body class="container-fluid">
 
     {% include 'courses/messages.html' %}
-    <header class="site-header"> <!-- Navbar -->
-      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top pb-3 pl-0">
+    <header class="site-header"> <!-- Left side of Navbar -->
+      <nav class="navbar navbar-expand-md navbar-dark bg-steel fixed-top pb-3">
         <div class="container-fluid nav-container">
           <button class="navbar-toggler" type="button" onclick="navFunction()">
-          <span class="navbar-toggler-icon"></span>
+          <div class="navbar-toggler-icon">
           </button>
-          <a class="navbar-brand mr-2" href="{% url 'blog-home' %}"><img src="{% static 'blog/img/learkn_logo.png' %}"  height='32' width='134' /></a>
+          <a class="navbar-brand mr-auto href="{% url 'blog-home' %}" ><img src="{% static 'blog/img/learkn_logo.png' %}"  height='32' width='134'/></a>
+          <form class="form-inline">
+            <input class="form-control mr-auto" type="search" placeholder="What would you like to learn...?" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
 
             <!-- Navbar Right Side -->
             <div class="navbar-nav">
@@ -45,53 +49,51 @@
               <a class="nav-item nav-link" href="{% url 'signup' %}">Sign Up</a>
               {% endif %}
             </div>
-          </div>
         </div>
       </nav>
     </header> 
 
-    <main role="main" class="profile-container row" > <!-- Profile Side Nav -->
-      <section class= "profile col-2 "> 
-          <div class="container user_profile">
-            <div class="row"> 
-              <div class="col-6 pt-4">
-                <img class="rounded-circle article-img pt-10" src="{{ user.profile.image.url }}">
-              </div>
-              <div class="col-6 pt-4">
-                {{ user.username }}
-              </div>
+    <section id="profile" class= "profile col-2 " style="width: 156px;"> 
+        <div class="container user_profile">
+          <div class="row"> 
+            <div class="col-6 pt-4">
+              <img class="rounded-circle article-img pt-10" src="{{ user.profile.image.url }}">
             </div>
-            <div class="row pt-4">
-              <div class="col-12 d-flex flex-row  pt-4">
-                <div class="image pr-3"> <img src="static/blog/img/profile_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> View Profile </div> 
-              </div> 
-              <div class="col-12 d-flex flex-row pt-4 ">
-                <div class="image pr-3"> <img src="static/blog/img/home_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> Home </div> 
-              </div> 
-              <div class="col-12 d-flex flex-row pt-4">
-                <div class="image pr-3"> <img src="static/blog/img/favorites_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> Favorites </div> 
-              </div> 
-              <div class="col-12 d-flex flex-row pt-4">
-                <div class="image pr-3"> <img src="static/blog/img/portfolio_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> Portfolio </div> 
-              </div> 
-              <div class="col-12 d-flex flex-row pt-4">
-                <div class="image pr-3"> <img src="static/blog/img/notifications_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> Notifications </div> 
-              </div> 
-              <div class="col-12 d-flex flex-row pt-4 ">
-                <div class="image pr-3"> <img src="static/blog/img/educators_icon.png" alt="" class="icons"> </div> 
-                <div class=" "> Educators </div> 
-              </div> 
+            <div class="col-6 pt-4">
+              {{ user.username }}
             </div>
-        </section> 
+          </div>
+          <div class="row pt-4">
+            <div class="col-12 d-flex flex-row  pt-4">
+              <div class="image pr-3"> <img src="static/blog/img/profile_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> View Profile </div> 
+            </div> 
+            <div class="col-12 d-flex flex-row pt-4 ">
+              <div class="image pr-3"> <img src="static/blog/img/home_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> Home </div> 
+            </div> 
+            <div class="col-12 d-flex flex-row pt-4">
+              <div class="image pr-3"> <img src="static/blog/img/favorites_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> Favorites </div> 
+            </div> 
+            <div class="col-12 d-flex flex-row pt-4">
+              <div class="image pr-3"> <img src="static/blog/img/portfolio_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> Portfolio </div> 
+            </div> 
+            <div class="col-12 d-flex flex-row pt-4">
+              <div class="image pr-3"> <img src="static/blog/img/notifications_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> Notifications </div> 
+            </div> 
+            <div class="col-12 d-flex flex-row pt-4 ">
+              <div class="image pr-3"> <img src="static/blog/img/educators_icon.png" alt="" class="icons"> </div> 
+              <div class=" "> Educators </div> 
+            </div> 
+          </div>
+    </section> 
+    <main id="main" role="main" class="profile-container row" style="margin-left: 156px;" > <!-- Profile Side Nav -->
        
         
-        <div class="container-fluid content col-10"> <!-- Dynamic content area -->
-          <div class="row ">
+        <div class="container content col-12"> <!-- Dynamic content area -->
               {% if messages %}
               {% for message in messages %}
                   <div class="alert alert-{{ message.tags }}">
@@ -104,12 +106,8 @@
             {% endblock %}
             
           </div>
-        </div>
     </main>
       
-        
-        
-   
 
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
@@ -122,15 +120,15 @@
     <script>
       /* Set the width of the side navigation to 250px and the left margin of the page content to 250px */
       function navFunction() {
-          switch (document.getElementById("main").style.marginLeft) {
-              case "250px":
-                  document.getElementById("profile col-2").style.width = "0";
+          switch (document.getElementById("profile").style.width) {
+              case "156px":
+                  document.getElementById("profile").style.width = "0";
                   document.getElementById("main").style.marginLeft = "0";
                   break;
               default:
                   // code block
-                  document.getElementById("profile col-2").style.width = "250px";
-                  document.getElementById("main").style.marginLeft = "250px";
+                  document.getElementById("profile").style.width = "156px";
+                  document.getElementById("main").style.marginLeft = "156px";
           }
       }
     </script>

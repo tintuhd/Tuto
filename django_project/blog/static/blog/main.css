@@ -3,8 +3,10 @@ body {
     color: #ffffff;
     margin-top: 0;
     font-size: 16px;
+    position: relative;
   }
   
+
 h1, h2, h3, h4, h5, h6 {
   color: #fcfcfc;
 }
@@ -38,8 +40,15 @@ ul {
 .site-header .navbar-nav .nav-link.active {
   font-weight: 500;
 }
+.form-inline{
+  height: 20x;
+}
 
-.nav-container{
+.navbar-brand{
+  margin-right: 0px;
+}
+
+a.nav-container{
   padding-left: 0;
 }
 
@@ -119,19 +128,27 @@ main.container-fluid{
 }
 
 
-main{
+#main{
   padding-top: 0px;
   font-size: 16px;
+  transition: margin-left .5s;
+
 }
 
 
 .profile{
-  width: 241 px;
-  height: 827px;
+  height: 100%;
+  position: absolute;
+  z-index: 1;
+  /* top: 75px; */
+  left: 0;
+  overflow-x: hidden;
+  transition: 0.5s;
   background-color: #0F1939;
   display: grid;
   grid-template-columns: 1fr;
   padding-left: 0;
+
 }
 
 .site-header{
@@ -144,5 +161,9 @@ main{
 
 .card{
   background-color: #0F1939;
+  padding-right: 0px;
+  padding-left: 0px;
+  margin-top: 10px;
+  border-radius: 30px;
   
 }
